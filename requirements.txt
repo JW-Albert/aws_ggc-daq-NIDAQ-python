@@ -1,0 +1,4 @@
+awsiotsdk
+pyserial
+pymodbus
+nidaqmx

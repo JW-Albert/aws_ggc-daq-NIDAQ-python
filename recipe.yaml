@@ -1,0 +1,35 @@
+---
+RecipeFormatVersion: "2020-01-25"
+ComponentName: "{COMPONENT_NAME}"
+ComponentVersion: "{COMPONENT_VERSION}"
+ComponentDescription: "AWS Greengrass component for imPHM, dedicated to NI sensor DAQ integration."
+ComponentPublisher: "{COMPONENT_AUTHOR}"
+ComponentConfiguration:
+  DefaultConfiguration:
+    RawDataTopic: "/topic/local/daq/nidaq/rawdata"
+    log_level: "INFO"
+    HeaderMapping:
+      - cDAQ1Mod1/ai0: "X"
+      - cDAQ1Mod1/ai1: "Y"
+      - cDAQ1Mod1/ai2: "Z"
+    accessControl:
+      aws.greengrass.ipc.pubsub:
+        imcloud.imphm.daq.NIDAQ:pubsub:1:
+          policyDescription: Allows publishing to the local pubsub topic
+          operations:
+            - aws.greengrass#PublishToTopic
+          resources:
+            - "/topic/local/daq/nidaq/rawdata"
+Manifests:
+  - Platform:
+      os: all
+    Artifacts:
+      - Uri: "s3://BUCKET_NAME/COMPONENT_NAME/COMPONENT_VERSION/imphm-aws_ggc-daq-NIDAQ.zip"
+        Unarchive: ZIP
+    Lifecycle:
+      install:
+        Script: "python3 -m pip install -r {artifacts:decompressedPath}/imphm-aws_ggc-daq-NIDAQ/requirements.txt"
+        RequiresPrivilege: true
+      run: 
+        Script: "python3 -u {artifacts:decompressedPath}/imphm-aws_ggc-daq-NIDAQ/src/main.py --rawdata_topic {configuration:/RawDataTopic} --log_level {configuration:/log_level} --header_mapping {configuration:/HeaderMapping}"
+        RequiresPrivilege: true

@@ -1,14 +1,14 @@
 {
   "component": {
-    "imcloud.imphm.daq.NIDAQ": {
-      "author": "imCloud Co., Ltd.",
+    "{COMPONENT_NAME}": {
+      "author": "JW-Albert X imCloud Co. Ltd.",
       "version": "1.0.0",
       "build": {
         "build_system": "zip"
       },
       "publish": {
-        "bucket": "imcloud-gg-component-artifacts",
-        "region": "ap-northeast-1"
+        "bucket": "{BUCKET_NAME}",
+        "region": "{REGION}"
       }
     }
   },

@@ -1,4 +1,4 @@
-# aws_ggc-daq-NIDAQ-python
+# imphm-aws_ggc-daq-NIDAQ-python
 
 A Python-based data acquisition system using National Instruments DAQ (Data Acquisition) hardware.
 

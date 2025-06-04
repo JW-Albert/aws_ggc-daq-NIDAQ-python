@@ -24,12 +24,12 @@ Manifests:
   - Platform:
       os: all
     Artifacts:
-      - Uri: "s3://{BUCKET_NAME}/{COMPONENT_NAME}/{COMPONENT_VERSION}/aws_ggc-daq-NIDAQ-python.zip"
+      - Uri: "s3://{BUCKET_NAME}/{COMPONENT_NAME}/{COMPONENT_VERSION}/imphm-aws_ggc-daq-NIDAQ-python.zip"
         Unarchive: ZIP
     Lifecycle:
       install:
-        Script: "python3 -m pip install -r {artifacts:decompressedPath}/aws_ggc-daq-NIDAQ-python/requirements.txt"
+        Script: "python3 -m pip install -r {artifacts:decompressedPath}/imphm-aws_ggc-daq-NIDAQ-python/requirements.txt"
         RequiresPrivilege: true
       run: 
-        Script: "python3 -u {artifacts:decompressedPath}/aws_ggc-daq-NIDAQ-python/src/main.py --rawdata_topic {configuration:/RawDataTopic} --log_level {configuration:/log_level} --header_mapping {configuration:/HeaderMapping}"
+        Script: "python3 -u {artifacts:decompressedPath}/imphm-aws_ggc-daq-NIDAQ-python/src/main.py --rawdata_topic {configuration:/RawDataTopic} --log_level {configuration:/log_level} --header_mapping {configuration:/HeaderMapping}"
         RequiresPrivilege: true

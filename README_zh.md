@@ -1,4 +1,4 @@
-# aws_ggc-daq-NIDAQ-python
+# imphm-aws_ggc-daq-NIDAQ-python
 
 基於 Python 的 National Instruments DAQ（數據採集）硬體系統。
 

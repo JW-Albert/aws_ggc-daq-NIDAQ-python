@@ -1,7 +1,7 @@
 {
   "component": {
     "{COMPONENT_NAME}": {
-      "author": "JW-Albert X imCloud Co. Ltd.",
+      "author": "imCloud Co. Ltd.",
       "version": "1.0.0",
       "build": {
         "build_system": "zip"
